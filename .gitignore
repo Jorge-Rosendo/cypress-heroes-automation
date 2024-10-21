@@ -1,0 +1,14 @@
+cypress.config.ts
+index.html.
+vite.config.ts
+tsconfig.node.json
+tailwind.config.cjs
+tsconfig.json
+src
+public
+eslintrc.cjs
+gitignore
+index.html
+node_modules
+package.json
+postcss.config.cjs
