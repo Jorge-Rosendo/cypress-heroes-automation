@@ -5,7 +5,7 @@ import HeroEditPage from "../page/heroEditPage"
 const mainPage = new MainPage()
 const heroEditPage = new HeroEditPage()
 
-describe('Login Heroes App', () => {
+describe('Editing existing hero information in cy.heroes', () => {
 
     const login = () => {
         mainPage.accessWebsite()        

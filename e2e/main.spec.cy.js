@@ -3,7 +3,7 @@ import MainPage from "../page/mainPage"
 
 const mainPage = new MainPage()
 
-describe('Login Heroes App', () => {
+describe('Testing funcionality of main page in cy.heroes', () => {
 
     const login = () => {
         mainPage.accessWebsite()        
@@ -50,8 +50,14 @@ describe('Login Heroes App', () => {
         login()
         mainPage.checkEditButton()
     })
+
     it('Checking the functionality of the delete button', () => {
         login()
         mainPage.checkDeleteButton()
+    })
+
+    it('Checking the functionality of the create new hero button', () => {
+        login()
+        mainPage.checkCreateNewHeroButton()
     })
 })

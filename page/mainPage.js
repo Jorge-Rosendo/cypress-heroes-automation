@@ -16,7 +16,8 @@ class MainPage {
             optionsButton : ".justify-end button",
             editButton : "[data-cy='pencil']",
             deleteButton : "[data-cy='trash']",
-            locationConfirmationOnEditPage : ".transition-all"
+            locationConfirmationOnEditPage : ".transition-all",
+            createNewHeroButton : "[href='/heroes/new']"
         }
         return selectors
     }
@@ -67,6 +68,11 @@ class MainPage {
     checkDeleteButton(){
         cy.get(this.selectorsList().deleteButton).eq(0).click()
         cy.get(this.selectorsList().optionsButton).eq(0).click()
+    }
+
+    checkCreateNewHeroButton (){
+        cy.get(this.selectorsList().createNewHeroButton).click()
+        cy.url().should('include', 'http://localhost:3000/heroes/new');
     }
 
 }
