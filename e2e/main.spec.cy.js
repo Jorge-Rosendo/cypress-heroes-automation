@@ -1,3 +1,4 @@
+import User from "../fixtures/user/userData.json"
 import MainPage from "../page/mainPage"
 
 const mainPage = new MainPage()
@@ -6,7 +7,7 @@ describe('Login Heroes App', () => {
 
     const login = () => {
         mainPage.accessWebsite()        
-        mainPage.login()         
+        mainPage.login(User.email, User.password)         
         mainPage.verifySuccessfulLogin()
         }
 
@@ -23,12 +24,34 @@ describe('Login Heroes App', () => {
     it('Successfully logs into the application', () => {
         login()
     })
+
+    it('Login with wrong email formatting in the app', () => {
+        mainPage.login(User.wrongEmail, User.password)
+        mainPage.invalidLoginMessage()
+    })
+
+    it('Login with wrong password in the app', () => {
+        mainPage.login(User.email, User.wrongPassword)
+        mainPage.invalidLoginMessage()
+    })
     
-    it('Checks hero interaction buttons functionality', () => {
+    it('Checking the functionality of the like button', () => {
         login()
         mainPage.checkLikeButton()
+    })
+
+    it('Checking the functionality of the hire button', () => {
+        login()
         noHireHero()
         yesHireHero()
+    })
+
+    it('Checking the functionality of the edit button', () => {
+        login()
         mainPage.checkEditButton()
+    })
+    it('Checking the functionality of the delete button', () => {
+        login()
+        mainPage.checkDeleteButton()
     })
 })
