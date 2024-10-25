@@ -210,4 +210,4 @@
 - **Feature Tested:** Login
 - **Test Environment:** Google Chrome
 - **Results Found:** It was not possible to create the hero because we were unable to select the power.
-- **Status:** Failed  
+- **Status:** Failed.  
