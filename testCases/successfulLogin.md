@@ -192,3 +192,22 @@
 - **Test Environment:** Google Chrome
 - **Results Found:** Same as the expected result.
 - **Status:** Approved  
+
+12. ## Test case: Creating a Hero
+- **Test Case ID:** TC-012
+- **Objective:** Create a working hero.
+- **Preconditions:** Have access to the system and be using it.
+- **Steps for Execution:**
+    1. Access cy.heroes.
+    2. Click login.
+    3. Put a valid email.
+    4. Put a valid password.
+    5. Click sign in.
+    6. Click on the create new Hero button.
+    7. Fill in the name, price, fans and saves fields.
+    8. Click on submit button.
+- **Expected Result:** Creates a functional hero that appears on the main screen
+- **Feature Tested:** Login
+- **Test Environment:** Google Chrome
+- **Results Found:** It was not possible to create the hero because we were unable to select the power.
+- **Status:** Failed  
