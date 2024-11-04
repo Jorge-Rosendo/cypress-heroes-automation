@@ -24,13 +24,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Cypress Tests
-        uses: cypress-io/github-action@v5
-        with:
-          start: 'npm run dev'
-          build: 'npm run build'
-          wait-on: 'http://localhost:3000'  # Ajuste a porta conforme o seu projeto
-          wait-on-timeout: 60
+      - name: Start development server
+        run: npm run dev &
+      
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
+        env:
+          CI: true
+          
+      - name: Run Cypress Tests
+        run: DEBUG=cypress:* npx cypress run
 
       - name: Upload Cypress Results
         if: always()
@@ -42,4 +45,3 @@ jobs:
             cypress/videos
             cypress/results
           if-no-files-found: ignore
-
