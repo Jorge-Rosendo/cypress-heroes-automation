@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '16'  # Ajuste a versão de acordo com o seu projeto
 
+      - name: List files
+        run: ls -R
+      
       - name: Install dependencies
         run: npm install
         working-directory: cypress-heroes
