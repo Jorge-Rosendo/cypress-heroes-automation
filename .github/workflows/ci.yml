@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Executa o workflow ao fazer push na branch principal
+  pull_request:
+    branches:
+      - main  # Executa o workflow em pull requests para a branch principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Ajuste a versão de acordo com o seu projeto
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Cypress Tests
+        uses: cypress-io/github-action@v5
+        with:
+          start: 'npm run dev'
+          build: 'npm run build'
+          wait-on: 'http://localhost:3000'  # Ajuste a porta conforme o seu projeto
+          wait-on-timeout: 60
+
+      - name: Upload Cypress Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Cypress Result
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/results
+          if-no-files-found: ignore
+
